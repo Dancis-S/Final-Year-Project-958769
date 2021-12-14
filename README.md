@@ -45,6 +45,8 @@ more active lifestyle hopefully improving everyone's overall health.
 
 - Picasso will be used to help handle and store images in the application.
 
+- Git will be used for Version Control
+
 #### How will the target audience interact with the system
 
 - The target audience will interact with the system through a graphical user interface (GUI).
