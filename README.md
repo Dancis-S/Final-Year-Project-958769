@@ -47,7 +47,7 @@ more active lifestyle hopefully improving everyone's overall health.
 
 #### How will the target audience interact with the system
 
-- The target audience will interact with the system through a graphical user interface.
+- The target audience will interact with the system through a graphical user interface (GUI).
 
 ## Project plan - Planning
 
