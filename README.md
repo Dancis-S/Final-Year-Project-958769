@@ -37,6 +37,14 @@ more active lifestyle hopefully improving everyone's overall health.
 
 - There will be a categories which will have some exercises and meal prep ideas.
 
+#### What languages/toodl/techonolgies will I be using
+
+- I will be using Java in Anroid Studion.
+
+- Firebase will be used for the storage.
+
+- Picasso will be used to help handle and store images in the application.
+
 #### How will the target audience interact with the system
 
 - The target audience will interact with the system through a graphical user interface.
@@ -45,16 +53,22 @@ more active lifestyle hopefully improving everyone's overall health.
 
 #### What are the project milestones
 
-- 
--
--
--
--
+- Read up on literature regarding my problem and fitness applications.
+- Gather user requirements.
+- Produce Requirement Specification Document.
+- Produce Design Document.
+- Code and test application while working on write up.
+- Complete final write up.
 
+### Plan
 
-## Plan
-
-- 20th Dec have most of literature review figured out
+- 20th Dec have most of literature review complete
 - 30th Dec Have the requirements
 - 5th Jan Have diagrams and everything figured out
 - 20th Jan Have a working prototype!
+
+#### What development model and methodology will I use
+
+- I will be using the Agile Development model, because it will allow me to to break the product development into smell inceremental buils that can be provided in iterations.
+
+- The Agile methodology that I will use will be extreme programming, because it works well for individual work through the approach of start off with simplicity and building up from it. It also will allow for changes in requirements and system functionality which could evolve during the development process.
