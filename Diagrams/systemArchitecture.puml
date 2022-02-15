@@ -1,0 +1,59 @@
+@startuml systemArchitecture
+
+Package "Main Activity" as main {
+    node "Login and register" as us1
+    node "Update user information" as us2
+    node "Messaging" as us3
+}
+
+cloud "Internet" {
+
+
+}
+
+
+cloud "Google Firebase Services" as fb {
+    
+    node "Firebase Authentication" as fb1 {
+        usecase Login as 1uc1
+        usecase "Verify Credentials" as 1uc2
+        usecase "Forgot Password" as 1uc3
+        usecase "Find User" as 1uc4
+        usecase "Database Query" as dbq1
+        1uc1 <--> 1uc2
+        1uc3 <--> 1uc4
+        1uc2 <--> dbq1
+        1uc4 <--> dbq1
+    }
+    database "Firebase Database" as fb2 {
+        folder "Data Held"{
+            [User Login Details]
+            [User Profile Information]
+            [User Chats]
+        }
+    }
+    node "Cloud Services and Messaging" as fb3 {
+        usecase "View Profile" as 2uc1
+        usecase "Fetch Profile" as 2uc2
+        usecase "Edit Profile" as 2uc3
+        usecase "Database Query" as dbq2
+        usecase "Update User Information" as 2uc4
+        usecase "Update Chat Log" as 2uc5
+        2uc1 <--> 2uc2
+        2uc2 <--> dbq2
+        2uc3 <--> 2uc2
+        2uc4 <--> dbq2
+        2uc5 <--> dbq2
+    }
+    
+}
+
+us1 <--> Internet
+us2 <--> Internet
+us3 <--> Internet
+Internet <--> fb1
+Internet <--> fb3
+dbq1 <--> fb2
+dbq2 <--> fb2
+
+@enduml
