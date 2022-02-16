@@ -1,0 +1,76 @@
+@startuml UseCase
+left to right direction 
+actor User as us
+package System{
+    usecase "login" as uc1
+    usecase "Forgot Password" as uc2
+    usecase "Recover" as uc3
+    usecase "Enter Details" as uc4
+    usecase "Verify Details" as uc5
+    usecase "Register" as uc6
+    usecase "Verification" as uc7 
+    usecase "Open Chats" as uc8
+    usecase "Send message" as uc9
+    usecase "My diary" as uc10
+    usecase "Log calorie and water intake" as uc11
+    usecase "Log amount of exercise" as uc12
+    usecase "Edit/Set Goals" as uc13
+    usecase "User Profile" as uc14
+    usecase "Customise Profile" as uc15
+    usecase "Search User" as uc16
+    usecase "Add Friend" as uc17
+    usecase "Create account" as uc18
+    usecase "Update information" as uc19
+    usecase "Log out" as uc20
+    usecase "View users profile" as uc21
+
+}
+actor Firebase as ser
+
+'The login part
+us -- uc1
+uc1 <-- uc2
+uc1 <-- uc4
+uc2 --> uc3
+uc4 --> uc5
+uc5 -- ser
+uc3 -- ser
+
+'User profile
+us -- uc14
+uc14 <-- uc15
+uc14 <-- uc20
+uc15 --> uc19
+
+'Adding friends
+us -- uc16
+uc16 <-- uc21
+uc21 <-- uc17
+
+'The chat part
+us -- uc8 
+uc8 <-- uc9
+uc9 -- ser
+
+'The register part
+us -- uc6
+uc6 --> uc7
+uc7 <-- uc18
+uc18 -- ser
+
+'The my diary part
+us -- uc10
+uc10 <-- uc13
+uc10 <-- uc11
+uc10 <-- uc12
+uc11 --> uc19
+uc12 --> uc19
+uc13 --> uc19
+ser -- uc19
+
+
+
+
+
+
+@enduml
