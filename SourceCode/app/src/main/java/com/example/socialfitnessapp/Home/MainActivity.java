@@ -1,8 +1,10 @@
-package com.example.socialfitnessapp;
+package com.example.socialfitnessapp.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.socialfitnessapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
