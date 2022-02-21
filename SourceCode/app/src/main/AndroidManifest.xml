@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialFitnessApp">
+        <activity android:name=".Authentication.RegInfoTwoActivity"></activity>
+        <activity android:name=".Authentication.RegInfoOneActivity" />
+        <activity android:name=".Authentication.RegisterActivity" />
+        <activity android:name=".Profile.ProfileActivity" />
+        <activity android:name=".Authentication.LoginActivity" />
         <activity android:name=".Home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

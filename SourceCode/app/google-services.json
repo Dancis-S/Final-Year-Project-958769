@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "988187999453",
+    "project_id": "socialfitnessapp-ab8c4",
+    "storage_bucket": "socialfitnessapp-ab8c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988187999453:android:3dac6b17d59186ee51ef34",
+        "android_client_info": {
+          "package_name": "com.example.socialfitnessapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988187999453-014b9hr5luam3p8haungrd8fithq2p15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_B2V0KLS7pPj8SI_KfyD0ndlnzpwT5Yc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988187999453-014b9hr5luam3p8haungrd8fithq2p15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
