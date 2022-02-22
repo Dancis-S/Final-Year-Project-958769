@@ -12,14 +12,14 @@
         android:layout_width="188dp"
         android:layout_height="45dp"
         android:backgroundTint="#1344C3"
-        android:text="Button"
+        android:text="Create Account"
         app:iconTint="#1C1B1B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.876" />
+        app:layout_constraintVertical_bias="0.868" />
 
     <EditText
         android:id="@+id/login_email"
@@ -56,7 +56,7 @@
         android:layout_width="188dp"
         android:layout_height="45dp"
         android:backgroundTint="#137717"
-        android:text="Button"
+        android:text="Login"
         app:iconTint="#1C1B1B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,11 @@
         android:background="@color/black"
         android:backgroundTint="#000000"
         android:foreground="@color/black"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="556dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.78" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
