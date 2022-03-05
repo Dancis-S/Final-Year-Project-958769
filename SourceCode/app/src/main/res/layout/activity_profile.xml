@@ -8,6 +8,32 @@
     android:backgroundTint="#B9F3BC"
     tools:context=".Profile.ProfileActivity">
 
+    <TextView
+        android:id="@+id/profile_surnameTextfield"
+        android:layout_width="242dp"
+        android:layout_height="19dp"
+        android:text="Surename:"
+        android:textColor="#020202"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.214" />
+
+    <TextView
+        android:id="@+id/profile_nameTextfield"
+        android:layout_width="242dp"
+        android:layout_height="19dp"
+        android:text="Name:"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.164" />
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="69dp"
@@ -42,37 +68,36 @@
         android:text="Edit Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintVertical_bias="0.467" />
 
     <Button
         android:id="@+id/profile_logout"
-        android:layout_width="135dp"
-        android:layout_height="45dp"
+        android:layout_width="148dp"
+        android:layout_height="60dp"
         android:backgroundTint="#2D44BC"
         android:text="Logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.137" />
+        app:layout_constraintVertical_bias="0.466" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="324dp"
+        android:id="@+id/profile_bioTextfield"
+        android:layout_width="365dp"
         android:layout_height="92dp"
-        android:text="TextView"
+        android:text="Bio"
         android:textAlignment="center"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.397" />
+        app:layout_constraintVertical_bias="0.331" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
@@ -155,14 +180,27 @@
 
     <ImageView
         android:id="@+id/profile_profilePicture"
-        android:layout_width="161dp"
-        android:layout_height="160dp"
+        android:layout_width="128dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133"
+        app:layout_constraintVertical_bias="0.12"
         app:srcCompat="@drawable/profile_icon" />
+
+    <TextView
+        android:id="@+id/profile_usernameTextfield"
+        android:layout_width="242dp"
+        android:layout_height="19dp"
+        android:text="Username:"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.116" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
