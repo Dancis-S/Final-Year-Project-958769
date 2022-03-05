@@ -31,15 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         buttons();
 
-        mainBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut(); // logs out the user
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
     }
     // Method that is responsible for all the buttons on the activity
     protected void buttons() {
@@ -70,5 +62,17 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        // Button to logout
+        mainBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut(); // logs out the user
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }

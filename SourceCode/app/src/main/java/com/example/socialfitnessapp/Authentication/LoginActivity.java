@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                     uEmail.setError("Email is required");
                     issues = true;
                 }
-                if(uPassword.length() < 7) {
+                if(uPassword.length() < 6) {
                     uPassword.setError("Password length should be at least 7");
                     issues = true;
                 }

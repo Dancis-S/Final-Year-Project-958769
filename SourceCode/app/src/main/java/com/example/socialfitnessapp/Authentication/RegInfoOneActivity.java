@@ -54,7 +54,7 @@ public class RegInfoOneActivity extends AppCompatActivity {
                 String uPassword = getIntent().getStringExtra("keyPassword");
                 String uUsername = getIntent().getStringExtra("keyUsername");
 
-
+                // Creates the account for the user
                 fAuth.createUserWithEmailAndPassword(uEmail, uPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -66,15 +66,11 @@ public class RegInfoOneActivity extends AppCompatActivity {
 
 
                         }else {
+                            // When user fails to sign up i.e. email already taken
                             Toast.makeText(RegInfoOneActivity.this, "Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
-
-
-
-
 
             }
         });
