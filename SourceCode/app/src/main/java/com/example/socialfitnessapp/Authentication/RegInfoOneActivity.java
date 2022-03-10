@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.socialfitnessapp.Home.MainActivity;
+import com.example.socialfitnessapp.Profile.ProfileActivity;
 import com.example.socialfitnessapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -91,7 +92,7 @@ public class RegInfoOneActivity extends AppCompatActivity {
                                 }
                             });
 
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                             startActivity(intent);
                             finish();
 
