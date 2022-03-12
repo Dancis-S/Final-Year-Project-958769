@@ -37,13 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
 
-        // If the user is already logged in then just take them into the app
-        if(fAuth.getCurrentUser() != null) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
         // Button to take user back to login screen
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

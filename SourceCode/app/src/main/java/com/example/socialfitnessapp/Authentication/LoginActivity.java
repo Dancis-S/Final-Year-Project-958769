@@ -39,6 +39,12 @@ public class LoginActivity extends AppCompatActivity {
         registerBtn = findViewById(R.id.login_registerButton);
         forgotPassBtn = findViewById(R.id.login_forgotPasswordButton);
 
+        // If the user is already logged in then just take them into the app
+        if(fAuth.getCurrentUser() != null) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
 
         loginBtn.setOnClickListener(new View.OnClickListener() {

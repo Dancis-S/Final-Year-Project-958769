@@ -10,26 +10,26 @@
 
     <TextView
         android:id="@+id/profile_surnameTextfield"
-        android:layout_width="242dp"
+        android:layout_width="233dp"
         android:layout_height="19dp"
         android:text="Surename:"
         android:textColor="#020202"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintVertical_bias="0.212" />
 
     <TextView
         android:id="@+id/profile_nameTextfield"
-        android:layout_width="242dp"
+        android:layout_width="232dp"
         android:layout_height="19dp"
         android:text="Name:"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintHorizontal_bias="0.905"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.164" />
@@ -40,10 +40,10 @@
         android:layout_height="68dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63"
+        app:layout_constraintVertical_bias="0.879"
         app:srcCompat="@drawable/dev_image" />
 
     <androidx.appcompat.widget.Toolbar
@@ -61,7 +61,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/profile_editProfile"
+        android:id="@+id/profile_editProfileButton"
         android:layout_width="169dp"
         android:layout_height="64dp"
         android:backgroundTint="#2D44BC"
@@ -180,11 +180,11 @@
 
     <ImageView
         android:id="@+id/profile_profilePicture"
-        android:layout_width="128dp"
-        android:layout_height="120dp"
+        android:layout_width="122dp"
+        android:layout_height="115dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.12"
@@ -192,8 +192,8 @@
 
     <TextView
         android:id="@+id/profile_usernameTextfield"
-        android:layout_width="242dp"
-        android:layout_height="19dp"
+        android:layout_width="233dp"
+        android:layout_height="21dp"
         android:text="Username:"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
