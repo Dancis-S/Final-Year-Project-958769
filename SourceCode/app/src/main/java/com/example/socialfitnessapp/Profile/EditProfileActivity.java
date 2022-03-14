@@ -19,6 +19,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class EditProfileActivity extends AppCompatActivity {
     TextView changePP;
@@ -26,6 +28,8 @@ public class EditProfileActivity extends AppCompatActivity {
     Button cancelBtn, saveBtn;
     ImageView profilePicture;
     FirebaseFirestore fStore;
+    FirebaseStorage fStorage;
+    StorageReference storageRef;
     FirebaseAuth fAuth;
     String userID;
     Uri imageUri;
@@ -73,7 +77,13 @@ public class EditProfileActivity extends AppCompatActivity {
         if(requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
             profilePicture.setImageURI(imageUri);
+            uploadPicture();
         }
+    }
+
+    // Method to upload picture to the firebase storage
+    private void uploadPicture() {
+
     }
 
     // Method that initialises all the views
@@ -81,6 +91,9 @@ public class EditProfileActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
+        fStorage = FirebaseStorage.getInstance();
+        storageRef = fStorage.getReference();
+
 
         profilePicture = findViewById(R.id.editProfile_profilePicture);
         cancelBtn = findViewById(R.id.editProfile_cancelButton);
