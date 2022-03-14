@@ -23,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    ImageView homeBtn, socialBtn, myProfileBtn, diaryBtn;
+    ImageView  profilePic, homeBtn, socialBtn, myProfileBtn, diaryBtn;
     TextView name, surname, username, bio;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -35,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        profilePic = findViewById(R.id.profile_profilePicture);
         homeBtn = findViewById(R.id.profile_homeButton);
         socialBtn = findViewById(R.id.profile_socialButton);
         myProfileBtn = findViewById(R.id.profile_myProfileButton);
