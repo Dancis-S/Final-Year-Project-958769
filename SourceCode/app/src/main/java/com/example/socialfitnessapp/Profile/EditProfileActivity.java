@@ -1,8 +1,10 @@
 package com.example.socialfitnessapp.Profile;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,8 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.socialfitnessapp.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -20,7 +26,10 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class EditProfileActivity extends AppCompatActivity {
     TextView changePP;
@@ -40,8 +49,37 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         initialise();
+        getUserInformation();
+        getUserProfilePicture();
+        buttons();
 
-        // Fetches user info from db and then displays for editing
+    }
+
+    // Method that will fetch users profile picture
+    private void getUserProfilePicture() {
+
+        storageRef = FirebaseStorage.getInstance().getReference();
+        StorageReference profileRef = storageRef.child("users/" + userID + "/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                String url = uri.toString();
+                Picasso.get().load(uri).into(profilePicture);
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+
+    }
+
+
+    // Fetches user info from db and then displays for editing
+    protected void getUserInformation() {
+
         DocumentReference documentReference = fStore.collection("users").document(userID);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -53,21 +91,7 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        // Allows the user to select a picture and displays that picture
-        changePP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent, 1);
-            }
-        });
-
-        saveData(documentReference);
-        buttons();
-
-
+        saveData(documentReference); // Method that is called to save any changes the user to makes
     }
 
     // Checks that the activity worked correctly and image chosen is not null
@@ -77,13 +101,39 @@ public class EditProfileActivity extends AppCompatActivity {
         if(requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
             profilePicture.setImageURI(imageUri);
-            uploadPicture();
         }
     }
 
     // Method to upload picture to the firebase storage
     private void uploadPicture() {
+        ProgressDialog pd = new ProgressDialog(this);
+        pd.setTitle("Uploading image...");
+        pd.show();
 
+        StorageReference ref = storageRef.child("users/" + userID + "/profile.jpg");
+
+        ref.putFile(imageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        pd.dismiss();
+                        Snackbar.make(findViewById(android.R.id.content), "Image Uploaded!", Snackbar.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(), "Failed to Upload", Toast.LENGTH_LONG).show();
+                        pd.dismiss();
+                    }
+                })
+                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                        double progressPercent = (100.00 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                        pd.setMessage("Percentage:  " + progressPercent + "%");
+                    }
+                });
     }
 
     // Method that initialises all the views
@@ -123,6 +173,8 @@ public class EditProfileActivity extends AppCompatActivity {
                 reference.update("username", uUsername);
                 reference.update("bio", uBio);
 
+                uploadPicture();
+
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 finish();
             }
@@ -131,6 +183,17 @@ public class EditProfileActivity extends AppCompatActivity {
 
     // Method that contains all the buttons that don't require anything passed to them
     protected void buttons() {
+
+        // Allows the user to select a picture and displays that picture
+        changePP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, 1);
+            }
+        });
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override

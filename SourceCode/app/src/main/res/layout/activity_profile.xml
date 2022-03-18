@@ -20,39 +20,39 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.591" />
+        app:layout_constraintVertical_bias="0.602" />
 
     <TextView
         android:id="@+id/profile_surnameTextfield"
-        android:layout_width="126dp"
-        android:layout_height="26dp"
+        android:layout_width="132dp"
+        android:layout_height="36dp"
         android:text="Surename:"
         android:textAlignment="textStart"
         android:textColor="#020202"
-        android:textSize="16sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.775"
+        app:layout_constraintHorizontal_bias="0.774"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.319" />
+        app:layout_constraintVertical_bias="0.342" />
 
     <TextView
         android:id="@+id/profile_nameTextfield"
-        android:layout_width="121dp"
-        android:layout_height="25dp"
+        android:layout_width="127dp"
+        android:layout_height="35dp"
         android:text="Name:"
         android:textAlignment="textEnd"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintHorizontal_bias="0.235"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintVertical_bias="0.343" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar4"
@@ -106,7 +106,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.453" />
+        app:layout_constraintVertical_bias="0.486" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
@@ -189,29 +189,30 @@
 
     <ImageView
         android:id="@+id/profile_profilePicture"
-        android:layout_width="127dp"
-        android:layout_height="120dp"
+        android:layout_width="152dp"
+        android:layout_height="133dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162"
+        app:layout_constraintVertical_bias="0.175"
         app:srcCompat="@drawable/profile_icon" />
 
     <TextView
         android:id="@+id/profile_usernameTextfield"
-        android:layout_width="186dp"
-        android:layout_height="32dp"
+        android:layout_width="208dp"
+        android:layout_height="37dp"
         android:text="Username:"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="19sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095" />
+        app:layout_constraintVertical_bias="0.097" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
