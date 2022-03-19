@@ -8,6 +8,36 @@
     android:backgroundTint="#4FAA52"
     tools:context=".Authentication.RegInfoOneActivity">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="34dp"
+        android:layout_height="29dp"
+        android:text="Kg"
+        android:textAlignment="center"
+        android:textColor="#0E0E0E"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.668"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.638" />
+
+    <EditText
+        android:id="@+id/regOne_weightInput"
+        android:layout_width="94dp"
+        android:layout_height="31dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#F3F3F3"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.637" />
+
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="173dp"
@@ -21,21 +51,6 @@
         app:srcCompat="@drawable/dev_image" />
 
     <TextView
-        android:id="@+id/regOne_weightInfo"
-        android:layout_width="39dp"
-        android:layout_height="30dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textColor="#0B0A0A"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.679" />
-
-    <TextView
         android:id="@+id/regOne_heightText"
         android:layout_width="84dp"
         android:layout_height="30dp"
@@ -45,23 +60,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532" />
-
-    <SeekBar
-        android:id="@+id/regOne_heightBar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="325dp"
-        android:layout_height="40dp"
-        android:max="10"
-        android:progress="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.583" />
+        app:layout_constraintVertical_bias="0.524" />
 
     <EditText
         android:id="@+id/regOne_surname"
@@ -108,19 +110,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.396" />
 
-    <SeekBar
-        android:id="@+id/regOne_weightBar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="325dp"
-        android:layout_height="40dp"
-        android:max="10"
-        android:progress="3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732" />
-
     <Button
         android:id="@+id/regOne_signUpButton"
         android:layout_width="135dp"
@@ -157,24 +146,39 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.679" />
+        app:layout_constraintVertical_bias="0.636" />
 
-    <TextView
-        android:id="@+id/regOne_heightInfo"
-        android:layout_width="39dp"
-        android:layout_height="30dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textColor="#0B0A0A"
-        android:textSize="20sp"
+    <EditText
+        android:id="@+id/regOne_heightInput"
+        android:layout_width="94dp"
+        android:layout_height="31dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#F3F3F3"
+        android:ems="10"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532" />
+        app:layout_constraintVertical_bias="0.524" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="32dp"
+        android:layout_height="27dp"
+        android:text="Cm"
+        android:textAlignment="center"
+        android:textColor="#0E0E0E"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.664"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.526" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

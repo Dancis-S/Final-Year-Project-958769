@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     // Method that is responsible for all the buttons on the activity
     protected void buttons() {
 

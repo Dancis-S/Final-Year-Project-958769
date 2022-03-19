@@ -30,9 +30,8 @@ import java.util.Map;
 
 public class RegInfoOneActivity extends AppCompatActivity {
 
-    EditText name, surname, date;
-    TextView heightTxt, weightTxt, heightInfo, weightInfo;
-    SeekBar heightBar, weightBar;
+    EditText name, surname, date, weight, height;
+    TextView heightTxt, weightTxt;
     Button backBtn, signUpBtn;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -49,10 +48,8 @@ public class RegInfoOneActivity extends AppCompatActivity {
         date = findViewById(R.id.regOne_DOB);
         heightTxt = findViewById(R.id.regOne_heightText);
         weightTxt = findViewById(R.id.regOne_weightText);
-        heightInfo = findViewById(R.id.regOne_heightInfo);
-        weightInfo = findViewById(R.id.regOne_weightInfo);
-        heightBar = findViewById(R.id.regOne_heightBar);
-        weightBar = findViewById(R.id.regOne_weightBar);
+        weight = findViewById(R.id.regOne_weightInput);
+        height = findViewById(R.id.regOne_heightInput);
         backBtn = findViewById(R.id.regOne_backButton);
         signUpBtn = findViewById(R.id.regOne_signUpButton);
 
@@ -68,6 +65,8 @@ public class RegInfoOneActivity extends AppCompatActivity {
                 String uUsername = getIntent().getStringExtra("keyUsername");
                 String uName = name.getText().toString().trim();
                 String uSurname = surname.getText().toString().trim();
+                String uWeight = weight.getText().toString().trim();
+                String uHeight = height.getText().toString().trim();
 
                 // Creates the account for the user
                 fAuth.createUserWithEmailAndPassword(uEmail, uPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -84,6 +83,8 @@ public class RegInfoOneActivity extends AppCompatActivity {
                             user.put("name", uName);
                             user.put("surname", uSurname);
                             user.put("bio", "Hello! I am " + uUsername + " !");
+                            user.put("weight", uWeight);
+                            user.put("height", uHeight);
 
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
