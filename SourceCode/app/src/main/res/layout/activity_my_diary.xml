@@ -9,12 +9,13 @@
     tools:context=".MyDiary.MyDiaryActivity">
 
     <TextView
-        android:id="@+id/diary_leftCalories2"
+        android:id="@+id/diary_waterLeft"
         android:layout_width="68dp"
         android:layout_height="21dp"
         android:text="Goal"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.676"
@@ -29,6 +30,7 @@
         android:text="="
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.537"
@@ -57,6 +59,7 @@
         android:text="-"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.299"
@@ -65,12 +68,13 @@
         app:layout_constraintVertical_bias="0.117" />
 
     <TextView
-        android:id="@+id/diary_goalCalories15"
+        android:id="@+id/diary_exerciseGoal"
         android:layout_width="68dp"
         android:layout_height="21dp"
         android:text="Goal"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.139"
@@ -80,23 +84,24 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="24dp"
-        android:layout_height="21dp"
+        android:layout_width="29dp"
+        android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17"
+        app:layout_constraintVertical_bias="0.168"
         app:srcCompat="@drawable/water_icon" />
 
     <TextView
-        android:id="@+id/diary_goalCalories12"
+        android:id="@+id/diary_waterGoal"
         android:layout_width="68dp"
         android:layout_height="21dp"
         android:text="Goal"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.139"
@@ -126,6 +131,7 @@
         android:text="-"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.299"
@@ -154,6 +160,7 @@
         android:text="Goal"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.139"
@@ -163,23 +170,24 @@
 
     <ImageView
         android:id="@+id/imageView13"
-        android:layout_width="24dp"
-        android:layout_height="28dp"
+        android:layout_width="29dp"
+        android:layout_height="27dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221"
+        app:layout_constraintVertical_bias="0.22"
         app:srcCompat="@drawable/exercise_icon" />
 
     <TextView
-        android:id="@+id/diary_leftCalories3"
+        android:id="@+id/diary_exerciseLeft"
         android:layout_width="68dp"
         android:layout_height="21dp"
         android:text="Goal"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.676"
@@ -189,18 +197,18 @@
 
     <TextView
         android:id="@+id/diary_goalCalories8"
-        android:layout_width="70dp"
-        android:layout_height="11dp"
+        android:layout_width="54dp"
+        android:layout_height="18dp"
         android:text="to go"
         android:textAlignment="center"
         android:textColor="#838383"
-        android:textSize="8sp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintHorizontal_bias="0.661"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.094" />
+        app:layout_constraintVertical_bias="0.089" />
 
     <TextView
         android:id="@+id/diary_consumedCalories"
@@ -209,6 +217,7 @@
         android:text="Goal"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.408"
@@ -223,6 +232,7 @@
         android:text="="
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.537"
@@ -231,12 +241,13 @@
         app:layout_constraintVertical_bias="0.167" />
 
     <TextView
-        android:id="@+id/diary_consumedCalories2"
+        android:id="@+id/diary_waterConsumed"
         android:layout_width="68dp"
         android:layout_height="21dp"
         android:text="Goal"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.408"
@@ -251,13 +262,13 @@
         android:text="-"
         android:textAlignment="center"
         android:textColor="#717171"
-        android:textSize="8sp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.298"
+        app:layout_constraintHorizontal_bias="0.301"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.089" />
 
     <TextView
         android:id="@+id/diary_goalCalories5"
@@ -266,6 +277,7 @@
         android:text="="
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.537"
@@ -280,13 +292,13 @@
         android:text="="
         android:textAlignment="center"
         android:textColor="#717171"
-        android:textSize="8sp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.089" />
 
     <TextView
         android:id="@+id/diary_mlSign"
@@ -305,26 +317,27 @@
 
     <TextView
         android:id="@+id/diary_goalCalories6"
-        android:layout_width="70dp"
-        android:layout_height="11dp"
+        android:layout_width="75dp"
+        android:layout_height="19dp"
         android:text="consumed/done"
         android:textAlignment="center"
         android:textColor="#838383"
-        android:textSize="8sp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintVertical_bias="0.085" />
 
     <TextView
-        android:id="@+id/diary_consumedCalories3"
+        android:id="@+id/diary_exerciseDone"
         android:layout_width="68dp"
         android:layout_height="21dp"
         android:text="Goal"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.408"
@@ -363,14 +376,14 @@
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="26dp"
-        android:layout_height="22dp"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119"
+        app:layout_constraintVertical_bias="0.117"
         app:srcCompat="@drawable/food_icon" />
 
     <TextView
@@ -380,6 +393,7 @@
         android:text="Goal"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.676"
@@ -403,18 +417,18 @@
 
     <TextView
         android:id="@+id/diary_goalCalories2"
-        android:layout_width="70dp"
-        android:layout_height="11dp"
+        android:layout_width="50dp"
+        android:layout_height="15dp"
         android:text="goal"
         android:textAlignment="center"
         android:textColor="#838383"
-        android:textSize="8sp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.155"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintVertical_bias="0.089" />
 
     <TextView
         android:id="@+id/diary_goalCalories17"
@@ -423,6 +437,7 @@
         android:text="-"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.299"
@@ -673,6 +688,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.349" />
+        app:layout_constraintVertical_bias="0.36" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
