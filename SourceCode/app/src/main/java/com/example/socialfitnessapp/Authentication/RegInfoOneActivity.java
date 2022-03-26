@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class RegInfoOneActivity extends AppCompatActivity {
 
-    EditText name, surname, date, weight, height;
+    EditText name, surname, dateOfBirth, weight, height;
     TextView heightTxt, weightTxt;
     Button backBtn, signUpBtn;
     FirebaseAuth fAuth;
@@ -61,6 +61,7 @@ public class RegInfoOneActivity extends AppCompatActivity {
                 String uEmail = getIntent().getStringExtra("keyEmail");
                 String uPassword = getIntent().getStringExtra("keyPassword");
                 String uUsername = getIntent().getStringExtra("keyUsername");
+                String uDateOfBirth = dateOfBirth.getText().toString().trim();
                 String uName = name.getText().toString().trim();
                 String uSurname = surname.getText().toString().trim();
                 String uWeight = weight.getText().toString().trim();
@@ -80,6 +81,7 @@ public class RegInfoOneActivity extends AppCompatActivity {
                             user.put("username", uUsername);
                             user.put("name", uName);
                             user.put("surname", uSurname);
+                            user.put("dob", uDateOfBirth);
                             user.put("bio", "Hello! I am " + uUsername + " !");
                             user.put("weight", uWeight);
                             user.put("height", uHeight);
@@ -95,9 +97,9 @@ public class RegInfoOneActivity extends AppCompatActivity {
                             });
 
                             // Document reference that will store user diary is created with todays instance
-                            DocumentReference myDiaryReference = fStore.collection("diaries").document(userID);
-                            Map<String, DiaryTracking> diary = new HashMap<>();
                             String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                            DocumentReference myDiaryReference = fStore.collection("users/" + userID + "/myDiary").document(date);
+                            Map<String, DiaryTracking> diary = new HashMap<>();
                             diary.put(date, new DiaryTracking(date));
                             myDiaryReference.set(diary);
 
@@ -120,7 +122,7 @@ public class RegInfoOneActivity extends AppCompatActivity {
     protected void initialise() {
         name = findViewById(R.id.regOne_name);
         surname = findViewById(R.id.regOne_surname);
-        date = findViewById(R.id.regOne_DOB);
+        dateOfBirth = findViewById(R.id.regOne_DOB);
         heightTxt = findViewById(R.id.regOne_heightText);
         weightTxt = findViewById(R.id.regOne_weightText);
         weight = findViewById(R.id.regOne_weightInput);

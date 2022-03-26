@@ -2,6 +2,7 @@ package com.example.socialfitnessapp.MyDiary;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ import com.example.socialfitnessapp.Home.MainActivity;
 import com.example.socialfitnessapp.Profile.ProfileActivity;
 import com.example.socialfitnessapp.R;
 import com.example.socialfitnessapp.Social.SocialActivity;
+import com.google.common.util.concurrent.ExecutionError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -32,12 +35,13 @@ import java.util.Locale;
 public class MyDiaryActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    Button addCaloriesBtn;
+    Button addCaloriesBtn, addWaterBtn, addExerciseBtn;
     String userID, date;
-    TextView testBox, calorieGoal, currentCalories, caloriesLeft, waterGoal, currentWater, waterLeft
+    TextView calorieGoal, currentCalories, caloriesLeft, waterGoal, currentWater, waterLeft
                , exerciseGoal, currentExercise, exerciseLeft, heightInfo, weightInfo, bmiInfo;
     ImageView homeBtn, socialBtn, myProfileBtn, diaryBtn;
-    DocumentReference diary;
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,20 +50,54 @@ public class MyDiaryActivity extends AppCompatActivity {
 
         initialise(); // Initialises all the views on the screen
         buttons(); //contain all buttons and their functionality
-        fetchData(); // fetches the data from the db
+        fetchData(); // Fetches all the data and displays it
 
 
     }
 
+    //Method that takes code given and then asks for the value to be updates (i.e. calories code=1)
+    private void createNewDialog(int code) {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View popupView = getLayoutInflater().inflate(R.layout.popup, null);
+
+        EditText popupInput = (EditText) popupView.findViewById(R.id.popup_input);
+        TextView popupHeading = (TextView) popupView.findViewById(R.id.popup_heading);
+        Button cancelButton = (Button) popupView.findViewById(R.id.popup_cancelButton);
+        Button saveButton = (Button) popupView.findViewById(R.id.popup_saveButton);
+
+        dialogBuilder.setView(popupView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Fetches the amount entered and the uploads it and closes
+                int amount = Integer.parseInt(popupInput.getText().toString().trim());
+                updateIntake(amount, code);
+                dialog.dismiss();
+                recreate();
+                return;
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
     // Method to calculate the BMI of a user
-    private double calculateBMI(double height, double weight) {
+    public double calculateBMI(double height, double weight) {
         DecimalFormat df = new DecimalFormat("0.0");
         double value = (weight / ((height /100) * (height/ 100)));
         return Double.parseDouble(df.format(value));
     }
 
     // Function to calculate how far the user is from the goal
-    private int calculateChange(int goal, int current) {
+    public int calculateChange(int goal, int current) {
         return goal - current;
     }
 
@@ -69,7 +107,6 @@ public class MyDiaryActivity extends AppCompatActivity {
         socialBtn = findViewById(R.id.diary_socialButton);
         myProfileBtn = findViewById(R.id.diary_profileButton);
         diaryBtn = findViewById(R.id.diary_diaryButton);
-        testBox = findViewById(R.id.diary_testBox);
         calorieGoal = findViewById(R.id.diary_goalCalories);
         currentCalories = findViewById(R.id.diary_consumedCalories);
         caloriesLeft = findViewById(R.id.diary_leftCalories);
@@ -84,12 +121,15 @@ public class MyDiaryActivity extends AppCompatActivity {
         bmiInfo = findViewById(R.id.diary_bmiInfo);
         date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
+        addCaloriesBtn = findViewById(R.id.diary_addCalories);
+        addWaterBtn = findViewById(R.id.diary_addWaterButton);
+        addExerciseBtn = findViewById(R.id.diary_addExerciseButton);
+
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
 
     }
-
 
     // Fetches the data from the data base and then displays it
     private void fetchData() {
@@ -97,22 +137,18 @@ public class MyDiaryActivity extends AppCompatActivity {
         final String[] caloriesConsumed = new String[1];
         final String[] waterConsumed = new String[1];
         final String[] exerciseDone = new String[1];
-        DocumentReference documentReference = fStore.collection("diaries").document(userID);
+        DocumentReference documentReference = fStore.collection("users/" + userID + "/myDiary").document(date);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                // This is how you access the users diary info
                 HashMap<String, DiaryTracking> book = (HashMap) value.get(date);
-                testBox.setText((CharSequence) book.get("id"));
-                currentCalories.setText((CharSequence) book.get("calories"));
-                currentWater.setText((CharSequence) book.get("water"));
-                currentExercise.setText((CharSequence) book.get("exercise"));
+                currentCalories.setText(((CharSequence) book.get("calories")).toString());
+                currentWater.setText(((CharSequence) book.get("water")).toString());
+                currentExercise.setText(((CharSequence) book.get("exercise")).toString());
 
                 caloriesConsumed[0] = currentCalories.getText().toString().trim();
                 waterConsumed[0] =  currentWater.getText().toString().trim();
                 exerciseDone[0] = currentExercise.getText().toString().trim();
-
 
             }
         });
@@ -145,26 +181,25 @@ public class MyDiaryActivity extends AppCompatActivity {
         });
     }
 
-    // If HashMap doesn't contain today's elements then create it and upload it
-    protected void addNewDay() {
-        DiaryTracking today = new DiaryTracking(date);
-        DocumentReference documentReference = fStore.collection("diaries").document(userID);
-        documentReference.update(date, today);
-        fetchData();
-    }
-
-    //Updates the information provided
+    //Updates the information provided depending on the code provided
     protected void updateIntake(int amount, int code) {
-        DocumentReference documentReference = fStore.collection("diaries").document(userID);
+        DocumentReference documentReference = fStore.collection("users/" + userID + "/myDiary").document(date);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                // This is how you access the users diary info
                 HashMap<String, Object> book = (HashMap) value.get(date);
-                //book.replace("calories", Integer.toString(cals));
+                if(code == 1) {
+                    int cals = Integer.parseInt(currentCalories.getText().toString().trim()) + amount;
+                    book.replace("calories", Integer.toString(cals));
+                }
                 documentReference.update(date, book);
+                try {
+                    Thread.sleep(2000);
+                    return;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
@@ -174,6 +209,28 @@ public class MyDiaryActivity extends AppCompatActivity {
 
     // Method that is responsible for all the buttons on the activity
     protected void buttons() {
+
+        addCaloriesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createNewDialog(1);
+            }
+        });
+
+        addWaterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createNewDialog(2);
+            }
+        });
+
+        addExerciseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createNewDialog(3);
+            }
+        });
+
 
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
