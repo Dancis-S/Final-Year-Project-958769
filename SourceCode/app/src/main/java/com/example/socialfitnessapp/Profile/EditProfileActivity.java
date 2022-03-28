@@ -48,6 +48,7 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
         initialise();
         getUserInformation();
         getUserProfilePicture();
@@ -75,7 +76,6 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
     }
-
 
     // Fetches user info from db and then displays for editing
     protected void getUserInformation() {
