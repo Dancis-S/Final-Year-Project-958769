@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateUtils;
@@ -32,8 +33,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseStorage fStorage;
     FirebaseDatabase fDatabase;
-    DatabaseReference postRef;
+    DatabaseReference postRef, likeRef, commentRef;
     StorageReference postImageRef;
     String userID, date, username, userProfilePicture;
     ImageView addImagePost, homeButton, socialBtn, myProfileBtn, diaryBtn;
@@ -76,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         initialise(); // Initialises all the views on the screen
         buttons(); //contain all buttons and their functionality
         checkDay(); // Checks that the documents for the day exists, if not creates new ones
-        LoadPosts(); // Loads all the posts from the database
+        LoadPosts(); // Loads all the posts from the database and displays them
 
     }
 
@@ -100,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    // Method that calculates the time since a post was created
     private String calculateTimeAgo(String datePost) {
         SimpleDateFormat format = new SimpleDateFormat("dd-M-yyyy hh:mm");
         format.setTimeZone(TimeZone.getTimeZone("GMT"));
@@ -120,13 +125,45 @@ public class MainActivity extends AppCompatActivity {
         adapter = new FirebaseRecyclerAdapter<Posts, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Posts model) {
+                String postKey = getRef(position).getKey();
                 holder.postDesc.setText(model.getPostDesc());
                 String timeAgo = calculateTimeAgo(model.getDatePost());
                 holder.timeAgo.setText(timeAgo);
                 holder.username.setText(model.getUsername());
                 Picasso.get().load(model.getPostImageUrl()).into(holder.postImage);
-                System.out.println(model.getUserProfileImageUrl());
-                Picasso.get().load(model.getUserProfileImageUrl()).into(holder.profileImage);
+                if(model.getUserProfileImageUrl() == null) { // if no profile pic put the default
+                    holder.profileImage.setImageResource(R.drawable.profile_icon);
+                } else {
+                    Picasso.get().load(model.getUserProfileImageUrl()).into(holder.profileImage);
+                }
+                holder.countLikes(postKey, userID, likeRef);
+                // Implements like button
+                holder.likeImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        likeRef.child(postKey).child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                // Checks whether user has like the post or not and updates values accordingly
+                                if(snapshot.exists()) {
+                                    likeRef.child(postKey).child(userID).removeValue();
+                                    holder.likeImage.setColorFilter(Color.GRAY);
+                                } else {
+                                    likeRef.child(postKey).child(userID).setValue("like");
+                                    holder.likeImage.setColorFilter(Color.BLUE);
+                                }
+                                notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                Toast.makeText(MainActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                    }
+                });
             }
 
             @NonNull
@@ -156,8 +193,10 @@ public class MainActivity extends AppCompatActivity {
         fDatabase = FirebaseDatabase.getInstance("https://socialfitnessapp-ab8c4-default-rtdb.europe-west1.firebasedatabase.app");
         fStorage = FirebaseStorage.getInstance();
         postRef = fDatabase.getReference().child("posts");
+        likeRef = fDatabase.getReference().child("likes");
         postImageRef =  fStorage.getReference().child("postImages");
         userID = fAuth.getCurrentUser().getUid().toString();
+
         downloadProfilePic(); // Downloads the url of the users profile picture
         getUsername(); // fetches the username form the database
         sendImagePost = findViewById(R.id.home_postButton);
@@ -264,6 +303,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Method that is called when image needs to be selected from gallery
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -273,6 +313,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Method that allows the user to add a post to the timeline
     private void addPost() {
         String postDescription = inputPostDescription.getText().toString().trim();
         if(postDescription.isEmpty()) {
@@ -333,5 +374,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 }
