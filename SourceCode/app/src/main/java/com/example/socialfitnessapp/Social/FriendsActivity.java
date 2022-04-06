@@ -17,6 +17,7 @@ import com.example.socialfitnessapp.R;
 public class FriendsActivity extends AppCompatActivity {
 
     ImageView homeBtn, socialBtn, myProfileBtn, diaryBtn;
+    Button findFriend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class FriendsActivity extends AppCompatActivity {
         socialBtn = findViewById(R.id.friends_socialButton);
         myProfileBtn = findViewById(R.id.friends_myProfileButton);
         diaryBtn = findViewById(R.id.friends_diaryButton);
+        findFriend = findViewById(R.id.Friends_findFriendsBtn);
 
         buttons();
 
@@ -34,6 +36,15 @@ public class FriendsActivity extends AppCompatActivity {
 
     // Method that is responsible for all the buttons on the activity
     protected void buttons() {
+        findFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FindFriendActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

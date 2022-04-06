@@ -85,6 +85,7 @@ public class RegInfoOneActivity extends AppCompatActivity {
                             user.put("bio", "Hello! I am " + uUsername + " !");
                             user.put("weight", uWeight);
                             user.put("height", uHeight);
+                            user.put("profilePicture", null);
                             user.put("goalCalories", "2000" );
                             user.put("goalWater", "2500");
                             user.put("goalExercise", "30");

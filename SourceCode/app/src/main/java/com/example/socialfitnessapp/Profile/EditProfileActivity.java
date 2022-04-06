@@ -40,7 +40,7 @@ public class EditProfileActivity extends AppCompatActivity {
     FirebaseStorage fStorage;
     StorageReference storageRef;
     FirebaseAuth fAuth;
-    String userID;
+    String userID, ppLink;
     Uri imageUri;
 
 
@@ -64,7 +64,7 @@ public class EditProfileActivity extends AppCompatActivity {
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                String url = uri.toString();
+                ppLink = uri.toString();
                 Picasso.get().load(uri).into(profilePicture);
             }
         })
@@ -112,6 +112,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         StorageReference ref = storageRef.child("users/" + userID + "/profile.jpg");
 
+
         ref.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -134,6 +135,15 @@ public class EditProfileActivity extends AppCompatActivity {
                         pd.setMessage("Percentage:  " + progressPercent + "%");
                     }
                 });
+
+        // Gets the URL for the image and passes it to PPlink to save link to pic (for other services)
+        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                String url = uri.toString();
+                ppLink = url;
+            }
+        });
     }
 
     // Method that initialises all the views
@@ -162,6 +172,11 @@ public class EditProfileActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(imageUri != null) {
+                    uploadPicture();
+                } // only changes the profile picture given uri is not null
+
                 String uUsername = username.getText().toString().trim();
                 String uName = name.getText().toString().trim();
                 String uSurname = surname.getText().toString().trim();
@@ -172,8 +187,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 reference.update("surname" , uSurname);
                 reference.update("username", uUsername);
                 reference.update("bio", uBio);
-
-                uploadPicture();
+                reference.update("profilePicture", ppLink);
 
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 finish();
