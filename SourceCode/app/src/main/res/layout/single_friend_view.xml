@@ -22,40 +22,63 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <Button
+                android:id="@+id/friend_messageButton"
+                android:layout_width="135dp"
+                android:layout_height="42dp"
+                android:backgroundTint="#0E11F6"
+                android:text="Message"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.937"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.917" />
+
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/findFriend_usrViewPP"
-                android:layout_width="81dp"
-                android:layout_height="81dp"
+                android:id="@+id/friend_usrPP"
+                android:layout_width="82dp"
+                android:layout_height="72dp"
                 android:src="@drawable/profile_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.051"
+                app:layout_constraintHorizontal_bias="0.019"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.512">
+                app:layout_constraintVertical_bias="0.333">
 
             </de.hdodenhof.circleimageview.CircleImageView>
 
             <TextView
-                android:id="@+id/findFriend_usrViewUsername"
-                android:layout_width="257dp"
-                android:layout_height="45dp"
+                android:id="@+id/friend_Username"
+                android:layout_width="263dp"
+                android:layout_height="42dp"
                 android:text="username"
                 android:textColor="#000000"
-                android:textSize="28sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.807"
+                app:layout_constraintHorizontal_bias="0.875"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.266" />
+                app:layout_constraintVertical_bias="0.205" />
+
+            <Button
+                android:id="@+id/friend_viewProfileButton"
+                android:layout_width="134dp"
+                android:layout_height="41dp"
+                android:backgroundTint="#019F07"
+                android:text="View Profile"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.368"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.917" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

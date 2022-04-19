@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.socialfitnessapp.R;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -26,6 +28,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class FindFriendActivity extends AppCompatActivity {
@@ -73,7 +76,7 @@ public class FindFriendActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), FriendsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SocialActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -109,11 +112,15 @@ public class FindFriendActivity extends AppCompatActivity {
                     holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0,0));
 
                 } else {
-                    if(model.getProfilePicture() == null) {// check that there is a PP otherwise nothing
-                        holder.profilePicture.setImageResource(R.drawable.profile_icon);
-                    } else {
-                        Picasso.get().load(model.getProfilePicture()).into(holder.profilePicture);
-                    }
+                    //Downloads the user profile picture
+                    StorageReference profileRef = fStorage.getReference().child("users/" + snapshot.getId().toString() + "/profile.jpg");
+                    profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String url = uri.toString();
+                            Picasso.get().load(uri).into(holder.profilePicture);
+                        }
+                    });
 
                     holder.username.setText(model.getUsername());
                 }

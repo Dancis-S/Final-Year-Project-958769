@@ -52,7 +52,6 @@ public class MyDiaryActivity extends AppCompatActivity {
         buttons(); //contain all buttons and their functionality
         fetchData(); // Fetches all the data and displays it
 
-
     }
 
     //Method that takes code given and then asks for the value to be updates (i.e. calories code=1)

@@ -5,17 +5,17 @@ public class Users {
     private String bio;
     private String surname;
     private String username;
-
     private String profilePicture;
 
     public Users() {
     }
 
-    public Users(String name, String bio, String surname, String username) {
+    public Users(String name, String bio, String surname, String username, String profilePicture) {
         this.name = name;
         this.bio = bio;
         this.surname = surname;
         this.username = username;
+        this.profilePicture = profilePicture;
     }
 
     public String getName() { return name; }

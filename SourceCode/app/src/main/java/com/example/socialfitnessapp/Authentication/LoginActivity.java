@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Get firebase authentication instance
         fAuth = FirebaseAuth.getInstance();
 
         uEmail = findViewById(R.id.login_email);
@@ -92,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
-                finish(); // Kills current activity
+                finish();
             }
         });
 

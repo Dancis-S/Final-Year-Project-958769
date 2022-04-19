@@ -12,6 +12,48 @@
     app:layout_anchorGravity="center"
     tools:context=".Social.ViewProfileActivity">
 
+    <Button
+        android:id="@+id/viewProfile_declineButton"
+        android:layout_width="253dp"
+        android:layout_height="41dp"
+        android:backgroundTint="#ED1111"
+        android:text="Decline"
+        app:iconTint="#1C1B1B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.517" />
+
+    <View
+        android:id="@+id/divider7"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#B1B1B1"
+        android:backgroundTint="#979797"
+        android:foreground="#919191"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.561" />
+
+    <View
+        android:id="@+id/divider6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#B1B1B1"
+        android:backgroundTint="#979797"
+        android:foreground="#919191"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar13"
         android:layout_width="match_parent"
@@ -28,8 +70,8 @@
 
     <TextView
         android:id="@+id/viewProfile_bio"
-        android:layout_width="262dp"
-        android:layout_height="142dp"
+        android:layout_width="357dp"
+        android:layout_height="179dp"
         android:text="Bio"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -38,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintVertical_bias="0.798" />
 
     <ImageView
         android:id="@+id/viewProfile_profilePicture"
@@ -46,9 +88,10 @@
         android:layout_height="119dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139"
+        app:layout_constraintVertical_bias="0.145"
         app:srcCompat="@drawable/profile_icon" />
 
     <TextView
@@ -62,9 +105,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/viewProfile_surname"
@@ -77,10 +121,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.774"
+        app:layout_constraintHorizontal_bias="0.706"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.342" />
+        app:layout_constraintTop_toBottomOf="@+id/viewProfile_profilePicture"
+        app:layout_constraintVertical_bias="0.037" />
 
     <TextView
         android:id="@+id/viewProfile_name"
@@ -93,15 +137,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.265"
+        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.341" />
+        app:layout_constraintTop_toBottomOf="@+id/viewProfile_profilePicture"
+        app:layout_constraintVertical_bias="0.038" />
 
     <Button
         android:id="@+id/viewProfile_addFriendBtn"
         android:layout_width="252dp"
         android:layout_height="43dp"
+        android:backgroundTint="#40A515"
         android:text="Send Friend Request"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

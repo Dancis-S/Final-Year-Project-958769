@@ -136,14 +136,6 @@ public class EditProfileActivity extends AppCompatActivity {
                     }
                 });
 
-        // Gets the URL for the image and passes it to PPlink to save link to pic (for other services)
-        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                String url = uri.toString();
-                ppLink = url;
-            }
-        });
     }
 
     // Method that initialises all the views
@@ -176,6 +168,15 @@ public class EditProfileActivity extends AppCompatActivity {
                 if(imageUri != null) {
                     uploadPicture();
                 } // only changes the profile picture given uri is not null
+                // Gets the URL for the image and passes it to PPlink to save link to pic (for other services)
+                StorageReference ref = storageRef.child("users/" + userID + "/profile.jpg");
+                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String url = uri.toString();
+                        ppLink = url;
+                    }
+                });
 
                 String uUsername = username.getText().toString().trim();
                 String uName = name.getText().toString().trim();

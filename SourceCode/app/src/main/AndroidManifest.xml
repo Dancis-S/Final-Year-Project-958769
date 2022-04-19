@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SocialFitnessApp">
+        <activity android:name=".Social.ChatActivity"></activity>
         <activity android:name=".Social.ViewProfileActivity">
             android:theme="@style/Theme.Transparent"
         </activity>
@@ -19,8 +20,6 @@
         </activity>
         <activity android:name=".Profile.EditProfileActivity" />
         <activity android:name=".Social.SocialActivity" />
-        <activity android:name=".Social.TimelineActivity" />
-        <activity android:name=".Social.FriendsActivity" />
         <activity android:name=".MyDiary.MyDiaryActivity" />
         <activity android:name=".Authentication.RegInfoTwoActivity" />
         <activity android:name=".Authentication.RegInfoOneActivity" />

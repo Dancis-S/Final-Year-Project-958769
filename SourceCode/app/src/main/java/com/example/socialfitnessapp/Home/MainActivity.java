@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.socialfitnessapp.Authentication.LoginActivity;
@@ -32,6 +33,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.api.Distribution;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -186,7 +188,10 @@ public class MainActivity extends AppCompatActivity {
         homeButton = findViewById(R.id.home_homeButton);
         mLoadingBar = new ProgressDialog(this);
         recyclerView = findViewById(R.id.main_recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setReverseLayout(true);
+        manager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(manager);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -250,7 +255,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SocialActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -259,7 +263,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -268,7 +271,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MyDiaryActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -363,13 +365,11 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }
                     else{
-
                         mLoadingBar.dismiss();
                         Toast.makeText(MainActivity.this, "Error: " + task.getException(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-
 
         }
 
