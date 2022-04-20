@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,9 +41,7 @@ public class MyDiaryActivity extends AppCompatActivity {
     TextView calorieGoal, currentCalories, caloriesLeft, waterGoal, currentWater, waterLeft
                , exerciseGoal, currentExercise, exerciseLeft, heightInfo, weightInfo, bmiInfo;
     ImageView homeBtn, socialBtn, myProfileBtn, diaryBtn;
-    private AlertDialog.Builder dialogBuilder;
-    private AlertDialog dialog;
-
+    Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,16 +55,15 @@ public class MyDiaryActivity extends AppCompatActivity {
 
     //Method that takes code given and then asks for the value to be updates (i.e. calories code=1)
     private void createNewDialog(int code) {
-        dialogBuilder = new AlertDialog.Builder(this);
-        final View popupView = getLayoutInflater().inflate(R.layout.popup, null);
+        dialog = new Dialog(this);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setContentView(R.layout.popup);
 
-        EditText popupInput = (EditText) popupView.findViewById(R.id.popup_input);
-        TextView popupHeading = (TextView) popupView.findViewById(R.id.popup_heading);
-        Button cancelButton = (Button) popupView.findViewById(R.id.popup_cancelButton);
-        Button saveButton = (Button) popupView.findViewById(R.id.popup_saveButton);
+        EditText popupInput = (EditText) dialog.findViewById(R.id.popup_input);
+        TextView popupHeading = (TextView) dialog.findViewById(R.id.popup_heading);
+        Button cancelButton = (Button) dialog.findViewById(R.id.popup_cancelButton);
+        Button saveButton = (Button) dialog.findViewById(R.id.popup_saveButton);
 
-        dialogBuilder.setView(popupView);
-        dialog = dialogBuilder.create();
         dialog.show();
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -191,6 +189,14 @@ public class MyDiaryActivity extends AppCompatActivity {
                 if(code == 1) {
                     int cals = Integer.parseInt(currentCalories.getText().toString().trim()) + amount;
                     book.replace("calories", Integer.toString(cals));
+                }
+                if(code == 2) {
+                    int wtr = Integer.parseInt(currentWater.getText().toString().trim()) + amount;
+                    book.replace("water", Integer.toString(wtr));
+                }
+                if(code == 3) {
+                    int exr = Integer.parseInt(currentExercise.getText().toString().trim()) + amount;
+                    book.replace("exercise", Integer.toString(exr));
                 }
                 documentReference.update(date, book);
                 try {

@@ -8,6 +8,18 @@
     android:backgroundTint="#B9F3BC"
     tools:context=".MyDiary.MyDiaryActivity">
 
+    <Button
+        android:id="@+id/diary_editInfoButton"
+        android:layout_width="124dp"
+        android:layout_height="38dp"
+        android:text="Edit Info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.763" />
+
     <TextView
         android:id="@+id/diary_exerciseDone"
         android:layout_width="68dp"
@@ -446,48 +458,6 @@
         app:layout_constraintVertical_bias="0.301" />
 
     <TextView
-        android:id="@+id/diary_heightInfo"
-        android:layout_width="39dp"
-        android:layout_height="21dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.284"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
-
-    <TextView
-        android:id="@+id/diary_bmiInfo"
-        android:layout_width="41dp"
-        android:layout_height="30dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.859"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.833" />
-
-    <TextView
-        android:id="@+id/diary_kgEnding"
-        android:layout_width="28dp"
-        android:layout_height="21dp"
-        android:text="Kg"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845" />
-
-    <TextView
         android:id="@+id/diary_heightHeading"
         android:layout_width="68dp"
         android:layout_height="21dp"
@@ -499,77 +469,7 @@
         app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
-
-    <TextView
-        android:id="@+id/diary_weightInfo"
-        android:layout_width="39dp"
-        android:layout_height="20dp"
-        android:text="0"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.284"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843" />
-
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#B1B1B1"
-        android:backgroundTint="#979797"
-        android:foreground="#919191"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
-
-    <TextView
-        android:id="@+id/diary_cmEnding"
-        android:layout_width="28dp"
-        android:layout_height="21dp"
-        android:text="Cm"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
-
-    <TextView
-        android:id="@+id/diary_weightHeading"
-        android:layout_width="68dp"
-        android:layout_height="21dp"
-        android:text="Weight"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845" />
-
-    <TextView
-        android:id="@+id/diary_bmiHeading1"
-        android:layout_width="64dp"
-        android:layout_height="21dp"
-        android:text="BMI:"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.823" />
+        app:layout_constraintVertical_bias="0.832" />
 
     <TextView
         android:id="@+id/diary_bmiHeading2"
@@ -584,7 +484,119 @@
         app:layout_constraintHorizontal_bias="0.689"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842" />
+        app:layout_constraintVertical_bias="0.872" />
+
+    <TextView
+        android:id="@+id/diary_heightInfo"
+        android:layout_width="39dp"
+        android:layout_height="21dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.832" />
+
+    <TextView
+        android:id="@+id/diary_kgEnding"
+        android:layout_width="28dp"
+        android:layout_height="21dp"
+        android:text="Kg"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.874" />
+
+    <TextView
+        android:id="@+id/diary_weightHeading"
+        android:layout_width="68dp"
+        android:layout_height="21dp"
+        android:text="Weight"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.874" />
+
+    <TextView
+        android:id="@+id/diary_bmiInfo"
+        android:layout_width="41dp"
+        android:layout_height="30dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.863" />
+
+    <TextView
+        android:id="@+id/diary_bmiHeading1"
+        android:layout_width="64dp"
+        android:layout_height="21dp"
+        android:text="BMI:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.853" />
+
+    <TextView
+        android:id="@+id/diary_cmEnding"
+        android:layout_width="28dp"
+        android:layout_height="21dp"
+        android:text="Cm"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.832" />
+
+    <TextView
+        android:id="@+id/diary_weightInfo"
+        android:layout_width="39dp"
+        android:layout_height="20dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.873" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#B1B1B1"
+        android:backgroundTint="#979797"
+        android:foreground="#919191"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.787" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -680,15 +692,15 @@
         app:srcCompat="@drawable/book_icon" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/diary_editGoalsButtons"
         android:layout_width="124dp"
         android:layout_height="38dp"
-        android:text="EditGoals"
+        android:text="Edit Goals"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.358" />
+        app:layout_constraintVertical_bias="0.763" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
