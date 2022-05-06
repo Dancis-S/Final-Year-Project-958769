@@ -36,7 +36,7 @@ import java.util.Locale;
 public class MyDiaryActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    Button addCaloriesBtn, addWaterBtn, addExerciseBtn, editGoalBtn;
+    Button addCaloriesBtn, addWaterBtn, addExerciseBtn, editGoalBtn, editInfoBtn;
     String userID, date;
     TextView calorieGoal, currentCalories, caloriesLeft, waterGoal, currentWater, waterLeft
                , exerciseGoal, currentExercise, exerciseLeft, heightInfo, weightInfo, bmiInfo;
@@ -77,12 +77,71 @@ public class MyDiaryActivity extends AppCompatActivity {
 
         dialog.show();
 
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String cals = calories.getText().toString();
+                String wtr = water.getText().toString();
+                String exr = exercise.getText().toString();
+                userReference.update("goalCalories", cals);
+                userReference.update("goalWater", wtr);
+                userReference.update("goalExercise", exr);
+                dialog.dismiss();
+            }
+        });
 
-
-
-
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
     }
+
+    // Allows the user to edit their info
+    private void editInfo() {
+        dialog = new Dialog(this);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setContentView(R.layout.popup_info);
+
+        EditText weight= (EditText) dialog.findViewById(R.id.info_weight);
+        EditText height = (EditText) dialog.findViewById(R.id.info_height);
+        Button saveBtn = (Button) dialog.findViewById(R.id.info_saveButton);
+        Button cancelBtn = (Button) dialog.findViewById(R.id.info_cancelButton);
+
+        DocumentReference userReference = fStore.collection("users").document(userID);
+        userReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                weight.setText(value.getString("weight"));
+                height.setText(value.getString("height"));
+            }
+        });
+
+        dialog.show();
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String wht = weight.getText().toString();
+                String hgt = height.getText().toString();
+                userReference.update("weight", wht);
+                userReference.update("height", hgt);
+                dialog.dismiss();
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+
+
 
     //Method that takes code given and then asks for the value to be updates (i.e. calories code=1)
     private void createNewDialog(int code) {
@@ -161,6 +220,7 @@ public class MyDiaryActivity extends AppCompatActivity {
         addWaterBtn = findViewById(R.id.diary_addWaterButton);
         addExerciseBtn = findViewById(R.id.diary_addExerciseButton);
         editGoalBtn = findViewById(R.id.diary_editGoalsButtons);
+        editInfoBtn = findViewById(R.id.diary_editInfoButton);
 
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
@@ -263,6 +323,13 @@ public class MyDiaryActivity extends AppCompatActivity {
 
     // Method that is responsible for all the buttons on the activity
     protected void buttons() {
+        editInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editInfo();
+            }
+        });
+
         editGoalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

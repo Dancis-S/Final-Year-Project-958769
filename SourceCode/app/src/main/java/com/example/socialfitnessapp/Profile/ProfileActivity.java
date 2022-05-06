@@ -114,8 +114,8 @@ public class  ProfileActivity extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fAuth.signOut();
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-               fAuth.signOut();
                startActivity(intent);
                finish();
             }
@@ -135,7 +135,7 @@ public class  ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
                 startActivity(intent);
-                finish();
+                finishAffinity();
             }
         });
 
