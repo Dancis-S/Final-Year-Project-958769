@@ -67,7 +67,7 @@ public class SocialActivity extends AppCompatActivity {
 
         homeBtn = findViewById(R.id.social_homeButton);
         socialBtn = findViewById(R.id.social_socialButton);
-        myProfileBtn = findViewById(R.id.social_myProfileButton);
+        myProfileBtn = findViewById(R.id.social_profileButton);
         diaryBtn  = findViewById(R.id.social_myDiaryButton);
         findFriendsBtn = findViewById(R.id.social_findFriendsButton);
         recyclerView = findViewById(R.id.social_friendsList);

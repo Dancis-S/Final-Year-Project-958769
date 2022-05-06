@@ -133,7 +133,7 @@
                 android:layout_height="27dp"
                 android:layout_marginStart="256dp"
                 android:layout_marginBottom="308dp"
-                android:text="99"
+                android:text="0"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/main_commentImage"

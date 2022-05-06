@@ -3,17 +3,23 @@ package com.example.socialfitnessapp.Profile;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.DownloadManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.socialfitnessapp.Authentication.LoginActivity;
 import com.example.socialfitnessapp.Home.MainActivity;
 import com.example.socialfitnessapp.MyDiary.MyDiaryActivity;
 import com.example.socialfitnessapp.R;
@@ -32,7 +38,7 @@ import com.squareup.picasso.Picasso;
 
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
-public class ProfileActivity extends AppCompatActivity {
+public class  ProfileActivity extends AppCompatActivity {
 
     ImageView  profilePic, homeBtn, socialBtn, myProfileBtn, diaryBtn;
     TextView name, surname, username, bio;
@@ -41,7 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseStorage fStorage;
     StorageReference storageRef;
     String userID;
-    Button editProfileBtn;
+    Button editProfileBtn, logoutBtn, testBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +69,6 @@ public class ProfileActivity extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 String url = uri.toString();
                 Picasso.get().load(uri).into(profilePic);
-            }
-        })
-        .addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
             }
         });
     }
@@ -92,21 +92,35 @@ public class ProfileActivity extends AppCompatActivity {
         profilePic = findViewById(R.id.profile_profilePicture);
         homeBtn = findViewById(R.id.profile_homeButton);
         socialBtn = findViewById(R.id.profile_socialButton);
-        myProfileBtn = findViewById(R.id.profile_myProfileButton);
+        myProfileBtn = findViewById(R.id.profile_profileButton);
         diaryBtn = findViewById(R.id.profile_myDiaryButton);
         name = findViewById(R.id.profile_nameTextfield);
         surname = findViewById(R.id.profile_surnameTextfield);
         username = findViewById(R.id.profile_usernameTextfield);
         bio = findViewById(R.id.profile_bioTextfield);
         editProfileBtn = findViewById(R.id.profile_editProfileButton);
+        logoutBtn = findViewById(R.id.profile_logout);
+        testBtn = findViewById(R.id.profile_testButton);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
+
     }
 
     // Method that is responsible for all the buttons on the activity
     protected void buttons() {
+        // Button to log user out
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+               fAuth.signOut();
+               startActivity(intent);
+               finish();
+            }
+        });
+
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,5 +165,29 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        //Only for demo to show notification
+        testBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    NotificationChannel channel = new NotificationChannel("Notification", "Notification", NotificationManager.IMPORTANCE_DEFAULT);
+                    NotificationManager manager = getSystemService(NotificationManager.class);
+                    manager.createNotificationChannel(channel);
+                }
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "Notification");
+                builder.setContentTitle("Social Fitness App");
+                builder.setContentText("Hi! Don't forget to login to keep your streak going!");
+                builder.setSmallIcon(R.drawable.login_image);
+                builder.setAutoCancel(true);
+
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getApplicationContext());
+                managerCompat.notify(1,builder.build());
+
+            }
+        });
+
     }
     }

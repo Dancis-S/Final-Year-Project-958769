@@ -36,7 +36,7 @@ import java.util.Locale;
 public class MyDiaryActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    Button addCaloriesBtn, addWaterBtn, addExerciseBtn;
+    Button addCaloriesBtn, addWaterBtn, addExerciseBtn, editGoalBtn;
     String userID, date;
     TextView calorieGoal, currentCalories, caloriesLeft, waterGoal, currentWater, waterLeft
                , exerciseGoal, currentExercise, exerciseLeft, heightInfo, weightInfo, bmiInfo;
@@ -53,6 +53,37 @@ public class MyDiaryActivity extends AppCompatActivity {
 
     }
 
+    //Method that opens up the users goals and allows them to edit them
+    private void editGoalsDialog() {
+        dialog = new Dialog(this);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setContentView(R.layout.popup_diary);
+
+        EditText calories = (EditText) dialog.findViewById(R.id.popupDiary_calories);
+        EditText water = (EditText) dialog.findViewById(R.id.popupDiary_water);
+        EditText exercise = (EditText) dialog.findViewById(R.id.popupDiary_Exercise);
+        Button saveBtn = (Button) dialog.findViewById(R.id.popupDiary_saveButton);
+        Button cancelBtn = (Button) dialog.findViewById(R.id.popupDiary_cancelButton);
+
+        DocumentReference userReference = fStore.collection("users").document(userID);
+        userReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                exercise.setText(value.getString("goalExercise"));
+                water.setText(value.getString("goalWater"));
+                calories.setText(value.getString("goalCalories"));
+            }
+        });
+
+        dialog.show();
+
+
+
+
+
+
+    }
+
     //Method that takes code given and then asks for the value to be updates (i.e. calories code=1)
     private void createNewDialog(int code) {
         dialog = new Dialog(this);
@@ -63,6 +94,14 @@ public class MyDiaryActivity extends AppCompatActivity {
         TextView popupHeading = (TextView) dialog.findViewById(R.id.popup_heading);
         Button cancelButton = (Button) dialog.findViewById(R.id.popup_cancelButton);
         Button saveButton = (Button) dialog.findViewById(R.id.popup_saveButton);
+
+        if(code == 1) {
+            popupHeading.setText("Enter amount of Calories");
+        } else if (code == 2) {
+            popupHeading.setText("Enter amount of Water");
+        } else {
+            popupHeading.setText("Enter amount of Exercise");
+        }
 
         dialog.show();
 
@@ -103,7 +142,7 @@ public class MyDiaryActivity extends AppCompatActivity {
         homeBtn = findViewById(R.id.diary_homeButton);
         socialBtn = findViewById(R.id.diary_socialButton);
         myProfileBtn = findViewById(R.id.diary_profileButton);
-        diaryBtn = findViewById(R.id.diary_diaryButton);
+        diaryBtn = findViewById(R.id.diary_myDiaryButton);
         calorieGoal = findViewById(R.id.diary_goalCalories);
         currentCalories = findViewById(R.id.diary_consumedCalories);
         caloriesLeft = findViewById(R.id.diary_leftCalories);
@@ -121,6 +160,7 @@ public class MyDiaryActivity extends AppCompatActivity {
         addCaloriesBtn = findViewById(R.id.diary_addCalories);
         addWaterBtn = findViewById(R.id.diary_addWaterButton);
         addExerciseBtn = findViewById(R.id.diary_addExerciseButton);
+        editGoalBtn = findViewById(R.id.diary_editGoalsButtons);
 
         fAuth = FirebaseAuth.getInstance();
         fStore= FirebaseFirestore.getInstance();
@@ -212,8 +252,23 @@ public class MyDiaryActivity extends AppCompatActivity {
 
     }
 
+    // Gets the amount of calories the user has logged in the past week
+    private int[] fetchCalorieWeek() {
+        int arr[] = new int[7];
+         
+
+
+        return arr;
+    }
+
     // Method that is responsible for all the buttons on the activity
     protected void buttons() {
+        editGoalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editGoalsDialog();
+            }
+        });
 
         addCaloriesBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -89,7 +89,7 @@ public class RegInfoOneActivity extends AppCompatActivity {
                             user.put("goalCalories", "2000" );
                             user.put("goalWater", "2500");
                             user.put("goalExercise", "30");
-
+                            //sets the document reference to the hashmap
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

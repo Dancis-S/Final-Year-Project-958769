@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         return null;
     };
 
-    // Method that will fetch all the posts and display them
+    // Method that will fetches all the posts and displays them
     private void LoadPosts() {
         options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(postRef, Posts.class).build();
         adapter = new FirebaseRecyclerAdapter<Posts, MyViewHolder>(options) {
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                     Picasso.get().load(model.getUserProfileImageUrl()).into(holder.profileImage);
                 }
                 holder.countLikes(postKey, userID, likeRef);
-                // Implements like button
+
                 holder.likeImage.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -219,7 +219,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 username = (value.getString("username"));
-
             }
         });
     }
@@ -274,12 +273,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Button to logout
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut(); // logs out the user
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
             }
