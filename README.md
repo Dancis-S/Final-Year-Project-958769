@@ -62,12 +62,6 @@ more active lifestyle hopefully improving everyone's overall health.
 - Code and test application while working on write up.
 - Complete final write up.
 
-### Plan
-
-- 20th Dec have most of literature review complete
-- 30th Dec Have the requirements
-- 5th Jan Have diagrams and everything figured out
-- 20th Jan Have a working prototype!
 
 #### What development model and methodology will I use
 
