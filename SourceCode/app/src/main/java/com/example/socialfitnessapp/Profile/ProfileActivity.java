@@ -40,8 +40,8 @@ import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
 public class  ProfileActivity extends AppCompatActivity {
 
-    ImageView  profilePic, homeBtn, socialBtn, myProfileBtn, diaryBtn;
-    TextView name, surname, username, bio;
+    ImageView  profilePic, homeBtn, socialBtn, myProfileBtn, diaryBtn, ice, fire;
+    TextView name, surname, username, bio, streak;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     FirebaseStorage fStorage;
@@ -101,6 +101,9 @@ public class  ProfileActivity extends AppCompatActivity {
         editProfileBtn = findViewById(R.id.profile_editProfileButton);
         logoutBtn = findViewById(R.id.profile_logout);
         testBtn = findViewById(R.id.profile_testButton);
+        ice = findViewById(R.id.profile_iceIcon);
+        fire= findViewById(R.id.profile_fireIcon);
+        streak = findViewById(R.id.profile_streak);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -185,6 +188,9 @@ public class  ProfileActivity extends AppCompatActivity {
 
                 NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getApplicationContext());
                 managerCompat.notify(1,builder.build());
+                streak.setText("1");
+                ice.setVisibility(View.INVISIBLE);
+
 
             }
         });
